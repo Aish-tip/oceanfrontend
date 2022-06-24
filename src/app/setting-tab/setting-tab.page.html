@@ -1,0 +1,76 @@
+<ion-header *ngIf="ActiveUser" class="ion-no-border">
+  <header class="flex p-4 items-center justify-between" style="display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 12px;">
+    <div class="flex items-center" style="display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;">
+      <img src="../../assets/patient-1.png" width="50px" />
+      <h3 class="text-sm m-0 ml-2" style="padding-left: 5px;">
+        <span class="text-xs">Welcome</span>,
+        <span><b> {{ActiveUser?.name}}</b></span>
+      </h3>
+    </div>
+    <!-- <div>
+      <ion-icon class="text-lg" name="notifications-outline"></ion-icon>
+    </div> -->
+  </header>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h1 style="font-weight: 500;
+  font-size: 20px;margin:5%;
+  color: #1553AB;">Settings</h1>
+  <div>
+    <ion-tab-button class="setting-icon" tab="add-fisherman">
+      <ion-icon class="person-icon" name="person-outline"></ion-icon>
+      <ion-label>Add Fisherman</ion-label>
+      <span class="arrow-icon">&gt;</span>
+      <!-- <ion-icon name="chevron-forward-outline"></ion-icon> -->
+    </ion-tab-button>
+    
+    <ion-tab-button class="setting-icon" tab="">
+      <!-- <ion-icon name="person"></ion-icon> -->
+      <span class="rupee-icon">&#8377;</span>
+      <ion-label>Price of Items</ion-label>
+      <!-- <ion-icon name="chevron-forward-outline"></ion-icon> -->
+      <span class="arrow-icon">&gt;</span>
+    </ion-tab-button>
+    <ion-tab-button class="setting-icon" tab="">
+      <ion-icon class="location-icon" name="location-outline"></ion-icon>
+      <ion-label>Center Addresses & Numbers</ion-label>
+      <!-- <ion-icon name="chevron-forward-outline"></ion-icon> -->
+      <span class="arrow-icon">&gt;</span>
+    </ion-tab-button>
+  </div>
+  
+  <div class="wrapper-grad">
+    <div *ngIf="!ActiveUser" style="display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: -webkit-fill-available;
+    ">
+      <div class="loader"></div>
+    </div>
+    <div *ngIf="ActiveUser">
+
+      <ion-refresher spellcheck="z-index:9999" slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200"
+        (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
+    </div>
+    <div class="px-4">
+      <ion-button size="medium" expand="block" mode="ios" color="primary" (click)="LogOut()">
+        <span class="text-sm"> LogOut</span>
+      </ion-button>
+    </div>
+    <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+  </div>
+
+</ion-content>

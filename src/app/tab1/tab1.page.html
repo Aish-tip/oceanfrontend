@@ -1,0 +1,92 @@
+<ion-header *ngIf="ActiveUser" class="ion-no-border">
+  <header class="flex p-4 items-center justify-between" style="display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 12px;">
+    <div class="flex items-center" style="display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;">
+      <img src="../../assets/patient-1.png" width="50px" />
+      <h3 class="text-sm m-0 ml-2" style="padding-left: 5px;">
+        <span class="text-xs">Welcome</span>,
+        <span><b> {{ActiveUser?.name}}</b></span>
+      </h3>
+    </div>
+    <!-- <div>
+      <ion-icon class="text-lg" name="notifications-outline"></ion-icon>
+    </div> -->
+  </header>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="wrapper-grad">
+    <div *ngIf="!ActiveUser" style="display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: -webkit-fill-available;
+    ">
+      <div class="loader"></div>
+    </div>
+    <div *ngIf="ActiveUser">
+
+      <ion-refresher spellcheck="z-index:9999" slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200"
+        (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+      <div>
+        <ion-searchbar class="p-0" color="medium" style="--border-radius: 20px !important; --box-shadow: none"
+        (ionInput)="queryAcronyms($event)"></ion-searchbar>
+      <div *ngIf="queryF==false">
+        <div *ngIf="dockList">
+        <div *ngFor="let dock of dockList; let in=index" (click)="onClickDock(dock,$event)">
+          <!-- <ion-card color="primary">
+            <ion-card-header>
+              <ion-card-subtitle> {{dock.dockName}}
+                <span> ({{dock.address}}) </span>
+
+              </ion-card-subtitle> -->
+              <!-- <ion-card-subtitle> {{currentUserName}} </ion-card-subtitle> -->
+            <!-- </ion-card-header>
+            <ion-card-content>
+              Click to see List of Fisherman at {{dock.dockName}}
+            </ion-card-content>
+          </ion-card> -->
+          <ion-list>
+            <ion-radio-group >
+              <ion-item>
+                <ion-label style="color:#1553AB;">{{dock.dockName}}</ion-label>
+                <ion-radio slot="end"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+
+          </ion-list>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="queryF==true">
+      <div *ngIf="dockList">
+        <div *ngFor="let dock of dockList; let in=index" (click)="onClickDock(dock,$event)">
+          <ion-list>
+            <ion-radio-group >
+              <ion-item>
+                <ion-label style="color:#1553AB;">{{dock.dockName}}</ion-label>
+                <ion-radio slot="end"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+
+          </ion-list>
+        </div>
+      </div>
+    </div>
+      </div> 
+
+      
+    </div>
+    <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+  </div>
+
+</ion-content>

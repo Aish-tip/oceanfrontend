@@ -1,0 +1,48 @@
+<div style="position: fixed;z-index: 99;width: 100%;display: flex;justify-content: space-between;align-items: center;">
+
+  <!-- <ion-button class="menu" color="transparent" style="float: right;right: 0;z-index: 99;" size="large"
+    (click)="onMenu()">
+    <ion-icon color="light" name="menu-outline"></ion-icon>
+  </ion-button> -->
+  <div></div>
+  <ion-button class="menu" color="transparent" style="float: right;right: 50px;z-index: 99;" size="large"
+    (click)="barcode()">
+    <span style="display: block;">
+      <ion-icon color="primary" name="qr-code-outline" size="large"></ion-icon>
+    </span>
+
+  </ion-button>
+  <!-- <ion-tabs>
+    <ion-tab-button tab="barcode">
+     
+    </ion-tab-button>
+  </ion-tabs> -->
+</div>
+<ion-tabs>
+  <ion-tab-bar slot="bottom" style="--background: #f3f7fd; border: none; padding: 10px">
+    <ion-tab-button tab="tab1">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+    <!-- <ion-tab-button tab="tab2">
+      <ion-icon name="calendar"></ion-icon>
+      <ion-label>Appointments</ion-label>
+    </ion-tab-button> -->
+    <!-- <ion-tab-button tab="camera">
+      <ion-icon name="add-circle"></ion-icon>
+      <ion-label></ion-label>
+    </ion-tab-button> -->
+    <!-- <ion-tab-button tab="tab3">
+      <ion-icon name="document"></ion-icon>
+      <ion-label>Report</ion-label>
+    </ion-tab-button> -->
+    <ion-tab-button tab="tab3">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>User</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="setting-tab">
+      <ion-icon name="settings"></ion-icon>
+      <ion-label>Setting</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

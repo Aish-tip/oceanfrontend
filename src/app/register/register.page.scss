@@ -1,0 +1,58 @@
+// ion-item{
+//     --background: #3880ff;
+//     --color: #fff;
+// }
+ion-button {
+    --background: #062f77;
+}
+
+ion-content.background {
+    // --background: url('../../assets/Login In.png');
+    // background-repeat: no-repeat;
+    // background-size: contain;
+    // background-repeat: no-repeat;
+    // top: 0px !important;
+}
+
+.wrapper {
+    // background: url(../../assets/Landing-page.png);
+    background: url('../../assets/Login In.png');
+
+    // background: linear-gradient(182.19deg, #58CBCD 30.67%, rgba(171, 241, 195, 0.1) 87.14%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: bottom;
+    height: 100%;
+}
+
+ion-header.ios.header-ios.header-collapse-none.hydrated {
+    display: none !important;
+}
+
+// a{
+//     color: #fff;
+// }
+:host#background-content {
+    left: 0px;
+    right: 0px;
+    top: calc(var(--offset-top) * -1);
+    bottom: calc(var(--offset-bottom) * -1);
+    position: absolute;
+    background: transparent;
+}
+
+// .native-input.sc-ion-input-md {
+//     background: #fff;
+//     color: #1a1a1a;
+// }
+// .native-input.sc-ion-input-md:invalid {
+//     color: #F02D3A;
+//     background: #fff;
+// }
+.flex {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}

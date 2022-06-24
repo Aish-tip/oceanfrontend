@@ -1,0 +1,27 @@
+ion-tab-button{
+    display: block;
+    flex-direction: row;
+    color:#1553AB;
+    margin-bottom:5%;
+    max-width: 100%;
+}
+ion-icon{
+    margin-right: 10%;
+}
+.rupee-icon{
+    font-size:30px;
+    margin-right: 10%;
+}
+.arrow-icon, .location-icon{
+    font-size: 30px;
+}
+ion-label{
+    margin-top: 5%;
+}
+.setting-icon .arrow-icon{
+    float:right;
+    margin-left: 50%;
+}
+.setting-icon .person-icon{
+    float:left;
+}

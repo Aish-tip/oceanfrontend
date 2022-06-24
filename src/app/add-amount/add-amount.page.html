@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Transaction</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content *ngIf="fisherman">
+  <div class="fisherman">
+    <img src="../../assets/patient-1.png" width="150px" />
+    <h2>{{fisherman.name}}</h2>
+    <h4>#<span>{{fisherman.id}}</span></h4>
+  </div>
+  <p style="font-weight: 600;
+  font-size: 14px;
+  color: #1553AB;margin:5%">Add Transaction</p>
+  <ion-card style="min-height: 50px;box-shadow: none;">
+    <ion-card-content style="display: flex;
+    justify-content: space-evenly;">
+      <div>
+        <span style="font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        /* identical to box height */
+        
+        
+        color: #1553AB;">Paid <br>Rs. {{paid}}</span>
+      </div>
+      <div>
+        <span style="font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        /* identical to box height */
+        
+        
+        color: #1553AB;">Balance <br>Rs.{{Balance}}</span>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card style="box-shadow:none">
+    <ion-card-content>
+      <form #form="ngForm" (ngSubmit)="addAmount(form)" style="padding: 5px; width: 100%">
+        Amount
+        <ion-input class="bg-white rounded-lg text-sm overflow-hidden mb-3" name="Amount" type="number"
+        style="background: rgba(225, 225, 225, 0.5);border-radius: 8px;margin-bottom:10%" placeholder="Enter Amount" ngModel required>
+        </ion-input>
+        Date
+        <div style="display: flex; align-items: center;background: rgba(225, 225, 225, 0.5);border-radius: 8px;padding: 2% 5%;margin-bottom:10%">
+          <ion-icon size="large" name="calendar"></ion-icon>
+          <ion-datetime displayFormat="MMM DD, YYYY" name="transactionDate" placeholder="Date" ngModel>
+          </ion-datetime>
+        </div>
+        <ion-button mode="ios" color="primary" size="medium" type="submit" [disabled]="form.invalid" expand="block">
+          Submit
+        </ion-button>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

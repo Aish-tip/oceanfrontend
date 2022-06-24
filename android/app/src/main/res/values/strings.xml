@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">baeru-ocean</string>
+    <string name="title_activity_main">baeru-ocean</string>
+    <string name="package_name">com.oceanplastic.app</string>
+    <string name="custom_url_scheme">com.oceanplastic.app</string>
+</resources>

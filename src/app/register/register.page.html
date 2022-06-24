@@ -1,0 +1,75 @@
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="menu"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content padding>
+  <section class="wrapper">
+    <div class="flex flex-col justify-center text-center" style="position: relative;
+    padding-top: 3%;">
+      <div class="w-96 flex justify-center">
+        <img src="../../assets/Logo OBP.svg" width="180px" />
+
+      </div>
+    </div>
+    <!-- <form #form="ngForm" (ngSubmit)="login(form)">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center>
+          <ion-item>
+            <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+          </ion-item>
+          <ion-button color="primary" size="large" type="submit" [disabled]="form.invalid" expand="block">Login
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form> -->
+    <form #form="ngForm" (ngSubmit)="register(form)" style="padding: 5px;">
+      <p>Already registered?<span> <a class="nav-item nav-link" routerLink="/login"
+            style="padding-left:5px; font-weight:700">Log In</a></span>
+      </p>
+      <ion-input style="margin-bottom: 5px;" name="username" type="name" placeholder="Your Name" ngModel required>
+      </ion-input>
+
+      <ion-input style="margin-bottom: 5px;" name="age" type="age" placeholder="Your age" ngModel>
+      </ion-input>
+      <ion-input style="margin-bottom: 5px;" name="gender" type="text" placeholder="Your Gender" ngModel>
+      </ion-input>
+      <ion-input style="margin-bottom: 5px;" name="email" type="email" placeholder="your@email.com" ngModel required>
+      </ion-input>
+      <ion-input style="margin-bottom: 5px;" name="mobile" type="number" placeholder="contact number" ngModel required>
+      </ion-input>
+      <ion-input style="margin-bottom: 5px;" name="bloodgroup" type="text" placeholder="Blood group" ngModel>
+      </ion-input>
+      <ion-input style="margin-bottom: 5px;" name="password" type="password" placeholder="Password" ngModel required>
+      </ion-input>
+      <!-- <ion-card>
+        <ion-item color="primary" *ngIf="flag">
+          <ion-label>Select Centers</ion-label>
+          <ion-select [(ngModel)]="selectedcenters" multiple="true" cancelText="Cancel" okText="Okay"
+            name="selectedcenters">
+            <ion-select-option *ngFor="let cen of allCenters; let i=index;" [value]="cen.id">{{cen.centerName}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Role</ion-label>
+          <ion-select [(ngModel)]="selectedrole" name="selectedrole" placeholder="Select One">
+            <ion-select-option value="admin">Admin</ion-select-option>
+            <ion-select-option value="user">User</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card> -->
+      <ion-button color="primary" size="large" type="submit" [disabled]="form.invalid" expand="block">Register
+      </ion-button>
+    </form>
+  </section>
+</ion-content>

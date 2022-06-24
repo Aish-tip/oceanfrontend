@@ -1,0 +1,156 @@
+<ion-header *ngIf="ActiveUser" class="ion-no-border">
+  <header class="flex p-4 items-center justify-between" style="display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 12px;">
+    <div class="flex items-center" style="display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;">
+      <img src="../../assets/patient-1.png" width="50px" />
+      <h3 class="text-sm m-0 ml-2" style="padding-left: 5px;">
+        <span class="text-xs">Welcome</span>,
+        <span><b> {{ActiveUser?.name}}</b></span>
+      </h3>
+    </div>
+    <!-- <div>
+      <ion-icon class="text-lg" name="notifications-outline"></ion-icon>
+    </div> -->
+  </header>
+</ion-header>
+
+<ion-content *ngIf="!fisherman">
+  <ion-card color="danger" style="    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;">
+    <ion-card-content>
+      <h1 style="
+        font-size: 2em !important;
+        color: #fff;
+        text-align: center;
+    ">Scan any QR first</h1>
+    </ion-card-content>
+    <ion-footer style="display: flex; justify-content: center;">
+      <ion-button (click)="scanBarcode()">Read New QR code</ion-button>
+    </ion-footer>
+  </ion-card>
+</ion-content>
+<ion-content *ngIf="fisherman">
+  <ion-refresher spellcheck="z-index:9999" slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200"
+    (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="fisherman">
+    <img src="../../assets/patient-1.png" width="150px" />
+    <h2>{{fisherman.name}}</h2>
+    <h4>#<span (click)="copy(fisherman.id)">{{fisherman.id}}</span></h4>
+  </div>
+  <div style="text-align: center; padding: 10px;">
+    <ion-button (click)="addItems(fisherman.id)" size="medium" color="primary">
+      Add Items
+    </ion-button>
+  </div>
+  <ion-card style="min-height: 50px;box-shadow: none;">
+    <ion-card-content>
+      <div class="dlist">
+        <span [ngStyle]="{'border-bottom':(photos==true)? '2px solid var(--ion-color-primary)': 'none'}"
+          (click)="func_photos($event)">Photos</span>
+        <span [ngStyle]="{'border-bottom':(items==true)? '2px solid var(--ion-color-primary)': 'none'}"
+          (click)="func_items($event)">Items</span>
+        <span [ngStyle]="{'border-bottom':(amounts==true)? '2px solid var(--ion-color-primary)': 'none'}"
+          (click)="func_amounts($event)">Amounts</span>
+      </div>
+      <div *ngIf="photos">
+        <ion-card style="box-shadow: none;margin:0%">
+          <ion-card-content style="padding:0%">
+            <div class="grid-container">
+              <div class="grid-item add-photo-card" *ngFor="let item of productimages; let index = index">
+                <!-- <img [src]="item"> -->
+                IMG {{item}}
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <div *ngIf="items">
+        <ion-card style="box-shadow: none;margin:10px 0px">
+          <ion-card-content class="grid-containerI">
+            <div class="grid-item item-card" *ngFor="let item of wasteItemsList; let index = index">
+              <img src="../../assets/icon/{{item.name}}.png" style="padding: 2%;margin:5%">
+              <p>{{item.name}}</p>
+            </div>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-content>
+            <div class="grid-item" *ngFor="let item of wasteCollected; let index = index"
+              style="background:#efefef;margin: 1%;">
+              <p>{{item.name}} | {{item.quantity}}Kg | Rs{{item.rate}} | Total= Rs{{item.total}} </p>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <div *ngIf="amounts">
+        <ion-card style="min-height: 50px;box-shadow:none">
+          <ion-card-content style="display: flex;
+          justify-content: space-evenly;">
+            <div>
+              <span style="color: #1553AB;font-weight: 500;
+              font-size: 14px;">Paid</span><br> Rs. {{paid}}
+            </div>
+            <div>
+              <span style="color: #1553AB;font-weight: 500;
+              font-size: 14px;">Balance</span><br>Rs.{{Balance}}
+            </div>
+          </ion-card-content>
+        </ion-card>
+        <ion-card style="min-height: 50px;box-shadow:none">
+          <ion-card-content style="padding:0%">
+            <div style="display: flex;
+              justify-content: space-evenly; align-items: center; padding: 4px;">
+              <span style="color:#1553AB;font-size: 14px;">
+                Transaction details
+              </span>
+              <span style="margin-left:5%;">
+                <ion-button (click)="addAmounts(fisherman.id)" size="small" color="primary" style="font-size:10px">Add Transaction</ion-button>
+              </span>
+            </div>
+            <div *ngFor="let item of transactions; let index = index">
+              <div style="padding: 4px;">
+                <!-- <img [src]="item"> -->
+                <span style="color:#1553AB;font-size: 14px;">
+                  Date
+                </span>
+                <span style="float:right;color:#1553AB;font-size: 14px;">
+                  Amount
+                </span>
+              </div>
+              <div *ngFor="let amt of item.amount;let index=inndex">
+                <div color="primary"
+                  style="justify-content: space-around;align-items: center; margin-bottom: 10%;padding: 5px;">
+                  <!-- <img [src]="item"> -->
+                  <span style="color:#1553AB;font-size: 14px;font-weight: 500;">
+                    <!-- <time datetime="YYYY-MM-DD"></time> -->
+                    {{amt.transactionDate | date:'dd-MM-yyyy'}}
+                  </span>
+                  <span style="float:right;font-weight:500;color:#000000">
+                    Rs. {{amt.Amount}}<br>
+                    <span style="font-size: 10px">At {{amt.transactionDate | date:'hh:mm'}}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+        <ion-card style="box-shadow: none;">
+          <ion-card-content>
+
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
