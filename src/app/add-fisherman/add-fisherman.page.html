@@ -1,3 +1,24 @@
+<ion-header *ngIf="ActiveUser" class="ion-no-border">
+  <header class="flex p-4 items-center justify-between" style="display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 12px;">
+    <div class="flex items-center" style="display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;">
+      <img src="../../assets/patient-1.png" width="50px" />
+      <h3 class="text-sm m-0 ml-2" style="padding-left: 5px;">
+        <span class="text-xs">Welcome</span>,
+        <span><b> {{ActiveUser?.name}}</b></span>
+      </h3>
+    </div>
+    <!-- <div>
+      <ion-icon class="text-lg" name="notifications-outline"></ion-icon>
+    </div> -->
+  </header>
+</ion-header>
 <ion-header>
   <ion-toolbar>
     <ion-title>addFisherman</ion-title>
@@ -5,5 +26,22 @@
 </ion-header>
 
 <ion-content>
-
+  <form #form="ngForm" (ngSubmit)="addfisherman(form)" style="padding: 5px;">
+    <ion-input style="margin-bottom: 5px;" name="name" type="name" placeholder="Your Name" ngModel required>
+    </ion-input>
+    <ion-input style="margin-bottom: 5px;" name="mobile" type="number" placeholder="contact number" ngModel required>
+    </ion-input>
+    <ion-input style="margin-bottom: 5px;" name="address" type="text" placeholder="Address" ngModel required>
+    </ion-input>
+    <ion-input style="margin-bottom: 5px;" name="dob" type="date" placeholder="Date of Birth" ngModel required>
+    </ion-input>
+    <ion-select [(ngModel)]="selectedcenters" cancelText="Cancel" okText="Okay" name="selectedcenters" placeholder="select center">
+      <ion-select-option *ngFor="let dock of dockList; let in=index" [value]="dock.id">{{dock.dockName}}</ion-select-option>
+    </ion-select>
+    <!-- <ion-select name="center" placeholder="select center" ngModel required>
+      <ion-select-option *ngFor="let dock of dockList; let in=index">{{dock.dockName}}</ion-select-option>
+    </ion-select> -->
+    <ion-button color="primary" size="large" type="submit" [disabled]="form.invalid" expand="block">Add Fisherman
+    </ion-button>
+  </form>
 </ion-content>

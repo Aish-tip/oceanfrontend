@@ -4,15 +4,17 @@ import { DatePipe } from "@angular/common";
 
 import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
-import { ToastController, ModalController } from '@ionic/angular';
+import { ToastController, ModalController, NavParams } from '@ionic/angular';
 import { Urls } from '../constants/urls';
 import { AddItemsPage } from '../add-items/add-items.page';
 import { AddAmountPage } from '../add-amount/add-amount.page';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-barcode',
   templateUrl: './barcode.page.html',
   styleUrls: ['./barcode.page.scss'],
+  providers:[NavParams]
 })
 export class BarcodePage implements OnInit {
   scannedData: any;
@@ -38,6 +40,7 @@ export class BarcodePage implements OnInit {
     private datePipe: DatePipe,
     public modalController: ModalController,
     public toastController: ToastController,
+    public navParams : NavParams,
     private router: Router,) { }
 
   ngOnInit() {
@@ -109,6 +112,17 @@ export class BarcodePage implements OnInit {
     this.photos = false;
     this.items = true;
     this.amounts = false;
+  }
+  plastic:any
+  itemlist:any
+  getItemList(i){
+    console.log(i);
+    this.http.get(`${Urls.WCOLLECTED}?filter[where][name]=${i.name}&access_token=${this.user.id}`)
+          .subscribe((res=> { 
+          console.log(res);
+          this.itemlist = res;      
+        }));
+     
   }
   func_amounts(e) {
     this.paid = 0;

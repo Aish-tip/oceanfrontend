@@ -25,17 +25,24 @@
   font-size: 20px;margin:5%;
   color: #1553AB;">Settings</h1>
   <div>
-    <ion-tab-button class="setting-icon" tab="add-fisherman">
+    <!-- <ion-tab-button  tab="tab2">
       <ion-icon class="person-icon" name="person-outline"></ion-icon>
       <ion-label>Add Fisherman</ion-label>
       <span class="arrow-icon">&gt;</span>
-      <!-- <ion-icon name="chevron-forward-outline"></ion-icon> -->
-    </ion-tab-button>
+      <ion-icon name="chevron-forward-outline"></ion-icon> 
+    </ion-tab-button> -->
+
+    <div class="setting-icon" (click)="AddFisherman()">
+      <!-- <span class="fa-light fa-user"></span> -->
+      <ion-icon class="person-icon" name="person"></ion-icon> 
+      <ion-label>Add-Fisherman</ion-label>
+      <span class="arrow-icon">&gt;</span>
+    </div>
     
-    <ion-tab-button class="setting-icon" tab="">
+    <ion-tab-button class="setting-icon" tab="tab2">
       <!-- <ion-icon name="person"></ion-icon> -->
       <span class="rupee-icon">&#8377;</span>
-      <ion-label>Price of Items</ion-label>
+      <ion-label class="price-label">Price of Items</ion-label>
       <!-- <ion-icon name="chevron-forward-outline"></ion-icon> -->
       <span class="arrow-icon">&gt;</span>
     </ion-tab-button>

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { AuthService } from '../auth.service';
 import { Urls } from '../constants/urls';
+import { FishermanPage } from '../fisherman/fisherman.page';
+import { AddFishermanPage } from '../add-fisherman/add-fisherman.page';
 
 
 @Component({
@@ -12,6 +14,8 @@ import { Urls } from '../constants/urls';
   styleUrls: ['./setting-tab.page.scss'],
 })
 export class SettingTabPage implements OnInit {
+
+  // addfisherman = AddFishermanPage;
 
   constructor(
 
@@ -51,6 +55,12 @@ export class SettingTabPage implements OnInit {
       console.log("DOCK List=> ", res)
       this.dockList = res;
     })
+  }
+  async AddFisherman(){
+    const modal = await this.modalController.create({  
+      component: AddFishermanPage  
+    });  
+    return await modal.present();  
   }
   LogOut() {
     this.authService.logout(this.user);

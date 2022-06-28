@@ -1,14 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Price of Items
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div class="wrapper-grad">
-
+    <ion-card style="box-shadow:none;margin:10px 0px">
+      <ion-card-content class="grid-containerI">
+        <div class="grid-item item-card" *ngFor="let item of wasteItemsList; let index = index;">
+          <img src="../../assets/icon/{{item.name}}.png" style="padding: 2%;margin:5%">
+          <p>{{item.name}}</p>
+          <p>{{item.rate}}</p>
+          <div (click)="showeditdetails(item)">
+            <ion-button color="primary" size="small" type="submit" [disabled]="form.invalid" expand="block">edit
+            </ion-button>
+          </div>
+        </div>
+        <div id="update" class="item-card">
+          <form #form="ngForm" (ngSubmit)="editdetails(form)">
+            <p>{{itemname}}</p>
+            <ion-input style="margin-bottom: 5px;" name="rate" type="number" placeholder="Item rate" ngModel required>
+            </ion-input>
+            <ion-button color="primary" size="small" type="submit" [disabled]="form.invalid" expand="block">Save
+            </ion-button>
+          </form>
+        </div>
+      </ion-card-content>
+    </ion-card>
   </div>
 
 </ion-content>

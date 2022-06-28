@@ -42,6 +42,7 @@ export class AddItemsPage implements OnInit {
 
       })
     }))
+    
   }
 
   tempData(w) {

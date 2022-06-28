@@ -78,15 +78,15 @@
       <div *ngIf="items">
         <ion-card style="box-shadow: none;margin:10px 0px">
           <ion-card-content class="grid-containerI">
-            <div class="grid-item item-card" *ngFor="let item of wasteItemsList; let index = index">
+            <div class="grid-item item-card" *ngFor="let item of wasteItemsList; let index = index;" (click)="getItemList(item)">
               <img src="../../assets/icon/{{item.name}}.png" style="padding: 2%;margin:5%">
-              <p>{{item.name}}</p>
+              <p id="userInput">{{item.name}}</p>
             </div>
           </ion-card-content>
         </ion-card>
         <ion-card>
           <ion-card-content>
-            <div class="grid-item" *ngFor="let item of wasteCollected; let index = index"
+            <div class="grid-item" *ngFor="let item of itemlist; let index = index"
               style="background:#efefef;margin: 1%;">
               <p>{{item.name}} | {{item.quantity}}Kg | Rs{{item.rate}} | Total= Rs{{item.total}} </p>
             </div>

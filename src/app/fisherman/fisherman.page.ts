@@ -33,7 +33,8 @@ export class FishermanPage implements OnInit {
   ngOnInit() {
     console.log(this.navParams)
     this.dataValue = this.navParams;
-    this.http.get(`${Urls.DOCKS}/${this.navParams.data[0].id}/fishermans?access_token=${this.navParams.data[1].id}`).subscribe(((res: any) => {
+    this.http.get(`${Urls.DOCKS}/${this.navParams.data[0].id}/fishermans?access_token=${this.navParams.data[1].id}`)
+    .subscribe(((res: any) => {
       console.log(res)
       this.fishermanList = res;
     }))
