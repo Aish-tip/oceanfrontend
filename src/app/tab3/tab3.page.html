@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="false">
   <header class="flex p-4 items-center justify-between" style="display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -20,7 +20,7 @@
   </header>
   <ion-toolbar>
     <ion-title>
-      User List
+      Fisherman List
     </ion-title>
   </ion-toolbar>
 
@@ -28,12 +28,16 @@
 
 <ion-content [fullscreen]="true">
   <div class="wrapper-grad">
+    <div *ngFor="let i of docksid; let in=index">
+      <div style="box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
+      margin: 8% 0%;
+      padding: 5%;">
+        <p>Name: {{i.name}}</p>
+        <p>Mobile: {{i.contactNum}}</p>
+        <p>Address: {{i.address}}</p>
+        <p>DOB: {{i.dob}}</p>
+      </div> 
     <div>
-      <!-- <ion-refresher spellcheck="z-index:9999" slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200"
-        (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content></ion-refresher-content>
-      </ion-refresher> -->
-      <div>
         
       </div>
     </div>

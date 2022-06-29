@@ -52,10 +52,11 @@ export class AddItemsPage implements OnInit {
       var tempWaste = {
         "name": '',
         "weight": NaN,
-        "rate": NaN,
+        "rate": 0,
         "total": NaN
       }
       tempWaste.name = w[i].name;
+      tempWaste.rate = w[i].rate;
       this.tmp = this.tmp.concat(tempWaste);
       console.log(w[i])
     }
@@ -68,13 +69,13 @@ export class AddItemsPage implements OnInit {
     this.tmp[i].total = this.tmp[i].weight * this.tmp[i].rate;
     console.log(this.tmp)
   }
-  chngerate(e, i) {
-    console.log(e.detail.value, i)
-    // console.log(e)
-    this.tmp[i].rate = e.detail.value;
-    this.tmp[i].total = this.tmp[i].weight * this.tmp[i].rate;
-    console.log(this.tmp)
-  }
+  // chngerate(e, i) {
+  //   console.log(e.detail.value, i)
+  //   // console.log(e)
+  //   this.tmp[i].rate = e.detail.value;
+  //   this.tmp[i].total = this.tmp[i].weight * this.tmp[i].rate;
+  //   console.log(this.tmp)
+  // }
   saveData(data) {
     console.log(this.tmp)
     var ttl = 0;

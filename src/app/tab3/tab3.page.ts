@@ -5,6 +5,7 @@ import { ModalController, NavParams, ToastController } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 import { FishermanPage } from '../fisherman/fisherman.page';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-tab3',
@@ -25,7 +26,10 @@ export class Tab3Page {
   ) { }
     dataValue:any
     fishermanList:any
+    docksid:any
+    l:any
   ngOnInit() {
+    // console.log(this.navParams)
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     console.log(this.user)
     this.http.get(`${Urls.USERS}/${this.user.userId}?access_token=${this.user.id}`).subscribe((res: any) => {
@@ -34,14 +38,20 @@ export class Tab3Page {
       
     })
 
-    console.log(this.navParams)
-    this.dataValue = this.navParams;
-    this.http.get(`${Urls.DOCKS}/${this.navParams.data[0].id}/fishermans?access_token=${this.navParams.data[1].id}`)
-    .subscribe(((res: any) => {
-      console.log(res)
-      this.fishermanList = res;
+    
+    this.http.get(`${Urls.FISHERMAN}?access_token=${this.user.id}`).subscribe(((res:any)=>{
+      console.log(res);
+      this.docksid = res;
+      
     }))
-    this.getDocks();
+
+    // for(let i=0;i<this.docksid.length;i++){
+      // this.http.get(`${Urls.FISHERMAN}/${this.docksid}?access_token=${this.user.id}`).subscribe(((res:any)=>{
+      //   console.log("fisherman",res);
+      // }))
+    // }
+    
+   
    
   }
   
