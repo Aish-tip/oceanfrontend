@@ -34,9 +34,11 @@ export class Tab2Page {
   }
   updatedlist:any;
   editdetails(d) {
-    const t =  document.getElementById("update");
-    if(t){
-      t.style.display="none";
+    const t2 = document.getElementById("update");
+    const t1 = document.getElementById("itemlist");
+    if(t2 && t1){
+      t2.style.display="none";
+      t1.style.display="block";
     }
     // var name = d.form.value.name;
     var rate = d.form.value.rate;
@@ -57,8 +59,10 @@ export class Tab2Page {
     this.itemname = i.name;
     console.log("test")
     const t2 = document.getElementById("update");
-    if(t2){
+    const t1 = document.getElementById("itemlist");
+    if(t2 && t1){
       t2.style.display="block";
+      t1.style.display="none"
     }
   }
 
